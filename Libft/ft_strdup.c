@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 13:19:49 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/12 07:31:21 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/13 11:07:07 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/13 11:16:48 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include "libft.h"
 
-void    *ft_memset(void *str, int c, size_t n)
+
+char	*ft_strcpy(char *dest, char *src)
 {
-    size_t i;
-    char *str2;
+	int	i;
 
-    str2 = str;
-    i = 0;
-    while (i < n)
-    {
-        str2[i] = (unsigned char) c;
-        i++;
-    }
-    return (str);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
+
+char	*ft_strdup(const char *src)
+{
+	char	*res;
+
+	res = malloc((ft_strlen(src) + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	return ((char *)ft_strcpy(res, (char *)src));
+}
+

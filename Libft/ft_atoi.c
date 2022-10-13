@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 13:19:49 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/12 07:31:21 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/13 09:36:05 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/13 10:43:12 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void    *ft_memset(void *str, int c, size_t n)
+int	ft_atoi(const char *str)
 {
-    size_t i;
-    char *str2;
+	int	i;
+	int	sign;
+	int	num;
 
-    str2 = str;
-    i = 0;
-    while (i < n)
+	i = 0;
+	sign = 1;
+	num = 0;
+	while (str[i] <= '\n' || str[i] <= '\r' || str[i] <= '\t'
+		|| str[i] <= '\f' || str[i] <= '\v' || str[i] <= ' ')
+		i++;
+
+	if (str[i] == '-')
     {
-        str2[i] = (unsigned char) c;
-        i++;
+		sign *= -1;
+		i++;   
     }
-    return (str);
+	if (str[i] == '+')
+		i++;   
+
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + str[i] - '0';
+		i++;
+	}
+	return (num * sign);
 }
