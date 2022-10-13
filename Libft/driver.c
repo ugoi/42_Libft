@@ -6,7 +6,7 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:39:39 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/13 18:00:23 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/13 20:35:43 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,31 +214,23 @@ void ft_tolower_test(void)
 void ft_strchr_test(void)
 {
     printf("\nft_strchr_test\n");
-   const char str[] = "http://www.tutorialspoint.com";
-   const char ch = '.';
-   char *ret;
-   char *ret2;
-
-   ret = ft_strchr(str, ch);
-   ret2 = strchr(str, ch);
-
-    printf("ft_strchr |%c| is - |%s|\n", ch, ret);
-    printf("strchr |%c| is - |%s|\n", ch, ret2);
+	char s[] = "tripouille";
+	// /* 1 */ check(ft_strchr(s, 't') == s); showLeaks();
+	// /* 2 */ check(ft_strchr(s, 'l') == s + 7); showLeaks();
+	// /* 3 */ check(ft_strchr(s, 'z') == 0); showLeaks();
+	printf("strchr: %s\n", ft_strchr(s, 0));
+   printf("expected: %s\n", s + strlen(s));
+	// /* 5 */ check(ft_strchr(s, 't' + 256) == s); showLeaks();
 }
 
 void ft_strchrr_test(void)
 {
+   char s[] = "tripouille";
+	char s2[] = "ltripouiel";
+	char s3[] = "";
     printf("\nft_strchr_test\n");
-   const char str[] = "http://www.tutorialspoint.com";
-   const char ch = '.';
-   char *ret;
-   char *ret2;
-
-   ret = ft_strrchr(str, ch);
-   ret2 = strrchr(str, ch);
-
-    printf("ft_strrchr |%c| is - |%s|\n", ch, ret);
-    printf("strrchr |%c| is - |%s|\n", ch, ret2);
+   printf("strrchr: %s\n", ft_strrchr(s, 't'));
+   printf("expected: %s\n", s);
 }
 
 void ft_strncmp_test(void)
@@ -276,70 +268,35 @@ void ft_strncmp_test(void)
 void ft_memchr_test(void)
 {
     printf("\nft_memchr_test\n");
-   const char str[] = "http://www.tutorialspoint.com";
-   const char ch = '.';
+   char s[] = {0, 1, 2 ,3 ,4 ,5};
    char *ret;
 
-   ret = ft_memchr(str, ch, strlen(str));
-
-   printf("ft_memchr: String after |%c| is - |%s|\n", ch, ret);
-
-    ret = memchr(str, ch, strlen(str));
-
-   printf("memchr: String after |%c| is - |%s|\n", ch, ret);
+   ret = ft_memchr(s, 0, 1);
+    
+   printf("memchr: %s\n", (char *)ret);
 
    
 }
 
 void ft_memcmp_test(void)
 {
-   char str1[15];
-   char str2[15];
-   int ret;
-
-   memcpy(str1, "abcdef", 6);
-   memcpy(str2, "ABCDEF", 6);
-
-   ret = ft_memcmp(str1, str2, 5);
-
-    printf("\nft_memcmp_test\n");
-   printf("ft_memcmp\n");
-   if(ret > 0) {
-      printf("str2 is less than str1");
-   } else if(ret < 0) {
-      printf("str1 is less than str2");
-   } else {
-      printf("str1 is equal to str2");
-   }
-
-   ret = memcmp(str1, str2, 5);
-
-    printf("\nmemcmp\n");
-   if(ret > 0) {
-      printf("str2 is less than str1");
-   } else if(ret < 0) {
-      printf("str1 is less than str2");
-   } else {
-      printf("str1 is equal to str2");
-   }
+	char s[] = {-128, 0, 127, 0};
+	char sCpy[] = {-128, 0, 127, 0};
+	char s2[] = {0, 0, 127, 0};
+	char s3[] = {0, 0, 42, 0};
+	// printf("ft_memcmp: %d\n", ft_memcmp(s, s2, 1));  
+	// check(ft_memcmp(s2, s, 1) < 0);
+	// check(ft_memcmp(s2, s3, 4) != 0);
+   printf("ft_memcmp: %d\n", ft_memcmp(s2, s3, 4));  
 }
 
 void ft_strnstr_test(void)
 {
-   const char haystack[20] = "TutorialsPoint";
-   const char needle[10] = "Point";
-   char *ret;
-
-   ret = ft_strnstr(haystack, needle, 15);
-
-    printf("\nft_strnstr_test\n");
-    printf("ft_strnstr\n");
-    printf("The substring is: %s\n", ret);
-
-    printf("strnstr\n");
-    ret = strnstr(haystack, needle, 15);
-    printf("The substring is: %s\n", ret);
-     
+	char haystack[30] = "aaabcabcd";
+	char needle[10] = "aabc";
+	char * empty = (char*)"";
+   
+   printf("strnstr: %s  expected: %s\n", ft_strnstr(empty, "", 0), empty);
 }
 
 void ft_atoi_test(void)
@@ -458,12 +415,12 @@ int main(void)
    //  ft_strncmp_test();
    //  ft_memchr_test();
    //  ft_memcmp_test();
-   //  ft_strnstr_test();
+    ft_strnstr_test();
    //  ft_atoi_test();
    //  ft_calloc_test();
    //  ft_strdup_test();
-    ft_substr_test();
-    ft_strjoin_test();
-    ft_strtrim_test();
+   //  ft_substr_test();
+   //  ft_strjoin_test();
+   //  ft_strtrim_test();
     return 0;
 }

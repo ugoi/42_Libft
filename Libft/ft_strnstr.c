@@ -6,7 +6,7 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:51:05 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/13 09:35:23 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/13 20:46:27 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char   *ft_strnstr(const char *str, const char *to_find, size_t len)
 	i = 0;
 	does_match = 0;
 	p_int = 0;
+	printf("match: %zu  len: %zu\n", does_match, len);
 	while ((i <= (ft_strlen(str) - ft_strlen(to_find))) && does_match == 0 && len--)
 	{
 		does_match = 1;

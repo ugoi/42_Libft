@@ -6,20 +6,21 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:21:21 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/13 08:36:08 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/13 19:13:44 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
+#include<stdio.h>
 
 void    *ft_memchr(const void *str, int c, size_t n)
 {
     const char *str_cast;
 
     str_cast = str;
-	while (*str_cast && n--)
+	while (n--)
     {
-        if (*str_cast == c)
+        if (*str_cast == (unsigned char) c)
             return ((void*) str_cast);
         str_cast++;
     }
