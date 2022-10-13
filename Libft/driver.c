@@ -6,7 +6,7 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:39:39 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/13 13:21:39 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/13 18:00:23 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,7 +391,7 @@ void ft_calloc_test(void)
 
 void ft_strdup_test(void)
 {
-    char source[] = "GeeksForGeeks";
+    char source[] = "GeeksForGeeks\n";
  
     // A copy of source is created dynamically
     // and pointer to copy is returned.
@@ -401,30 +401,69 @@ void ft_strdup_test(void)
     printf("%s", target);
 }
 
+
+void ft_substr_test(void)
+{
+   
+   char const s[] = "TutorialsPoint";
+   unsigned int start = 9;
+   size_t len = 14;
+   
+   char *ret;
+
+   ret = ft_substr(s, start, len);
+
+    printf("\nft_substr_test\n");
+    printf("The substring is: %s\n", ret);
+}
+
+void ft_strjoin_test(void)
+{
+   printf("\nft_strjoin_test\n");
+   char const  s1[] = "iuhiuiuh";
+   char const  s2[] = "xkxxxxxx\n";
+   char  *res = ft_strjoin(s1, s2);
+
+   printf("res: %s\n", res);
+}
+
+void ft_strtrim_test(void)
+{
+   printf("\nft_strtrim_test\n");
+   char const  s1[] = "abcHelloMaxabc";
+   char const  set[] = "abc";
+   char  *res = ft_strtrim(s1, set);
+
+   printf("res: %s\n", res);
+}
+
 int main(void)
 {
-    ft_isalpha_test();
-    ft_isdigit_test();
-    ft_isalnum_test();
-    ft_isascii_test();
-    ft_isprint_test();
-    ft_strlen_test();
-    ft_memset_test();
-    ft_bzero_test();
-    ft_memcpy_test();
-    ft_memmove_test();
-    ft_strlcpy_test();
-    ft_strlcat_test();
-    ft_toupper_test();
-    ft_tolower_test();
-    ft_strchr_test();
-    ft_strchrr_test();
-    ft_strncmp_test();
-    ft_memchr_test();
-    ft_memcmp_test();
-    ft_strnstr_test();
-    ft_atoi_test();
-    ft_calloc_test();
-    ft_strdup_test();
+   //  ft_isalpha_test();
+   //  ft_isdigit_test();
+   //  ft_isalnum_test();
+   //  ft_isascii_test();
+   //  ft_isprint_test();
+   //  ft_strlen_test();
+   //  ft_memset_test();
+   //  ft_bzero_test();
+   //  ft_memcpy_test();
+   //  ft_memmove_test();
+   //  ft_strlcpy_test();
+   //  ft_strlcat_test();
+   //  ft_toupper_test();
+   //  ft_tolower_test();
+   //  ft_strchr_test();
+   //  ft_strchrr_test();
+   //  ft_strncmp_test();
+   //  ft_memchr_test();
+   //  ft_memcmp_test();
+   //  ft_strnstr_test();
+   //  ft_atoi_test();
+   //  ft_calloc_test();
+   //  ft_strdup_test();
+    ft_substr_test();
+    ft_strjoin_test();
+    ft_strtrim_test();
     return 0;
 }
