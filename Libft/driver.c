@@ -155,35 +155,35 @@ void    ft_memmove_test(void)
     printf("After memmove dest = %s, src = %s\n", dest2, src2);
 }
 
-void ft_strlcpy_test(void)
-{
-    char src[40] = "Hello How Are You";
-    char dest[100];
+// void ft_strlcpy_test(void)
+// {
+//     char src[40] = "Hello How Are You";
+//     char dest[100];
   
-    printf("ft_strlcpy_test\n");
-    ft_strlcpy(dest, src, 18);
+//     printf("ft_strlcpy_test\n");
+//     ft_strlcpy(dest, src, 18);
 
-    printf("ft_strlcpy: %s\n", dest);
+//     printf("ft_strlcpy: %s\n", dest);
 
-    strlcpy(dest, src, 18);
-    printf("strlcpy : %s\n", dest);
-}
+//     strlcpy(dest, src, 18);
+//     printf("strlcpy : %s\n", dest);
+// }
 
-void ft_strlcat_test(void)
-{
-   char src[50] = "This is source";
-   char dest[50] = "This is destination";
-   size_t size = 34;
+// void ft_strlcat_test(void)
+// {
+//    char src[50] = "This is source";
+//    char dest[50] = "This is destination";
+//    size_t size = 34;
     
-    printf("ft_strlcat_test\n");
-    ft_strlcat(dest, src, size);
-    printf("ft_strlcat :    |%s|\n", dest);
+//     printf("ft_strlcat_test\n");
+//     ft_strlcat(dest, src, size);
+//     printf("ft_strlcat :    |%s|\n", dest);
 
-    char dest2[50] = "This is destination";
+//     char dest2[50] = "This is destination";
     
-    strlcat(dest2, src, size);
-    printf("strlcat :   |%s|", dest);
-}
+//     strlcat(dest2, src, size);
+//     printf("strlcat :   |%s|", dest);
+// }
 
 void ft_toupper_test(void)
 {
@@ -415,9 +415,9 @@ int main(void)
    //  ft_strncmp_test();
    //  ft_memchr_test();
    //  ft_memcmp_test();
-    ft_strnstr_test();
+   //  ft_strnstr_test();
    //  ft_atoi_test();
-   //  ft_calloc_test();
+    ft_calloc_test();
    //  ft_strdup_test();
    //  ft_substr_test();
    //  ft_strjoin_test();

@@ -18,27 +18,20 @@ char   *ft_strnstr(const char *str, const char *to_find, size_t len)
 {
 	size_t				i;
 	size_t				i2;
-	size_t				does_match;
-	char				*p_int;
 
 	i = 0;
-	does_match = 0;
-	p_int = 0;
-	printf("match: %zu  len: %zu\n", does_match, len);
-	while ((i <= (ft_strlen(str) - ft_strlen(to_find))) && does_match == 0 && len--)
+	if (!(*to_find) || to_find == NULL)
+		return ((char*) str);
+	while ((i < len && str[i]))
 	{
-		does_match = 1;
 		i2 = 0;
-		while (i2 < ft_strlen(to_find))
+		while (to_find[i2] == str[i + i2] && i + i2 < len)
 		{
-			if (!(str[i2 + i] == to_find[i2]))
-				does_match = 0;
 			i2++;
+			if (to_find[i2] == '\0')
+				return ((char *) str + i);
 		}
-		if (does_match == 1 && len)
-			return ((char *) (str + i2 + i - ft_strlen(to_find)));	
 		i++;
-		i2++;
 	}
-	return (p_int);
+	return (NULL);
 }

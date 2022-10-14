@@ -23,14 +23,12 @@ int	ft_atoi(const char *str)
 		|| str[i] <= '\f' || str[i] <= '\v' || str[i] <= ' ')
 		i++;
 
-	if (str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
     {
-		sign *= -1;
+		if (str[i] == '-')
+			sign *= -1;
 		i++;   
     }
-	if (str[i] == '+')
-		i++;   
-
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + str[i] - '0';
