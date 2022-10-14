@@ -6,20 +6,20 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:27:21 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/13 18:18:38 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:51 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
 #include "libft.h"
-#include <stdlib.h>
 
 char *ft_skip_first(char const *s1, char const *set)
 {
-    while (*set)
-    {
-        if (*s1++ != *set++)
+    while (*s1)
+    {   
+        if(ft_strchr(set, *s1) == NULL)
             return ((char *) s1);
+        s1++;
     }
     return ((char *) s1);
 }
@@ -27,18 +27,20 @@ char *ft_skip_first(char const *s1, char const *set)
 char *ft_skip_last(char const *s1, char const *set)
 {
     int set_len;
+    int s1_len;
 
     set_len = ft_strlen(set);
+    s1_len = ft_strlen(s1);
     while (*s1)
         s1++;
-    while (*set)
-        set++;
-    while (set_len--)
+    s1--;
+    while (s1_len--)
     {
-        if (*s1-- != *set--)
-            return ((char *) s1);
+        if(ft_strchr(set, *s1) == NULL)
+            return ((char *) (s1));
+        s1--;
     }
-    return ((char *) (s1 - 1));
+    return ((char *) (s1));
 }
 
 char    *ft_strtrim(char const *s1, char const *set)
@@ -49,11 +51,12 @@ char    *ft_strtrim(char const *s1, char const *set)
     char        *last;
     char        *res_cast;
 
-    
     first = ft_skip_first(s1, set);
     last = ft_skip_last(s1, set);
     res_len = last - first + 1;
-    res = malloc(sizeof(char) * (res_len + 1));
+    if (res_len < 0)
+        res_len = 0;
+    res = ft_calloc((res_len + 1), sizeof(char));
     if (!res)
         return (NULL);
     res_cast = res;
@@ -61,5 +64,3 @@ char    *ft_strtrim(char const *s1, char const *set)
         *res_cast++ = *first++;
     return ((char *) res);
 }
-
-//wwwHewww

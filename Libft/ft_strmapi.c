@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 13:30:33 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/14 15:08:10 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/14 20:49:01 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/14 21:37:15 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    char *res;
-    char *res_cast;
+    char            *res;
+    char            *res_cast;
+    unsigned int    i;
 
-    if (ft_strlen(s) < start)
-        len = 0;
-	else if (ft_strlen(s + start) < len)
-		len = ft_strlen(s + start);
-    res = malloc(sizeof(char) * (len + 1));
+    if (!s)
+        return (0);
+    res = malloc(sizeof(char) * (ft_strlen(s) + 1));
     res_cast = res;
-    if(!res)
-        return(NULL);
-    s += start;
-    while (*s && len--)
-        *res_cast++ = *s++;
+    if (!res_cast)
+        return (0);
+    i = 0;
+	while (*s)
+	{
+		*res_cast++ = f(i++, *s++);
+	}
     *res_cast = '\0';
+	return (res);
+}
 
-    return (res);
-} 
+// int main(void)
+// {
+// 	char * s = ft_strmapi("1234", addOne);
+// 	check(!strcmp(s, "1357"));
+// }

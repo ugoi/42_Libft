@@ -6,21 +6,23 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 10:55:28 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/13 11:02:08 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/14 13:29:39 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-void bzero (void *, size_t);
-
 void    *ft_calloc(size_t nitems, size_t size)
 {
-    void *res;
+    void    *res;
+    size_t  total;
 
-    if(!(res = malloc(nitems * size)))
+    total = nitems * size;
+    if (nitems && (total) / nitems != size)
         return (NULL);
-    bzero(res, nitems * size);
+    if(!(res = malloc(total)))
+        return (NULL);
+    ft_bzero(res, total);
     return (res);
 }
