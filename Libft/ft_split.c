@@ -16,8 +16,8 @@
 
 int	ft_is_sep(char const *str, char c)
 {
-    if (*str == c)
-        return (1);
+	if (*str == c)
+		return (1);
 	return (0);
 }
 

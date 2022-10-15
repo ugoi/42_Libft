@@ -26,10 +26,8 @@ char *ft_skip_first(char const *s1, char const *set)
 
 char *ft_skip_last(char const *s1, char const *set)
 {
-    int set_len;
     int s1_len;
 
-    set_len = ft_strlen(set);
     s1_len = ft_strlen(s1);
     while (*s1)
         s1++;
