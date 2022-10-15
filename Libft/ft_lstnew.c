@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 13:30:33 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:33:57 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/15 18:29:58 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/15 23:10:08 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include <stdlib.h>
-#include "libft.h"
+#include"libft.h"
+#include<stdlib.h>
+#include<stdio.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstnew(void *content)
 {
-	char	*res;
-	char	*res_cast;
+	t_list	*node;
 
-	if (ft_strlen(s) < start)
-		len = 0;
-	else if (ft_strlen(s + start) < len)
-		len = ft_strlen(s + start);
-	res = malloc(sizeof(char) * (len + 1));
-	res_cast = res;
-	if (!res)
+	node = malloc(sizeof(t_list));
+	if (!node)
 		return (NULL);
-	s += start;
-	while (*s && len--)
-		*res_cast++ = *s++;
-	*res_cast = '\0';
-	return (res);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }

@@ -6,13 +6,12 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:07:07 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/13 11:16:48 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/15 23:20:05 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-
 
 char	*ft_strcpy(char *dest, char *src)
 {
@@ -37,4 +36,3 @@ char	*ft_strdup(const char *src)
 		return (NULL);
 	return ((char *)ft_strcpy(res, (char *)src));
 }
-

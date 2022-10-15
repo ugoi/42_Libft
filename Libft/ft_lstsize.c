@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 13:47:30 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:22:15 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/15 19:33:39 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/15 23:10:37 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include"libft.h"
+#include<stdlib.h>
+#include<stdio.h>
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_lstsize(t_list *lst)
 {
-	unsigned int	i;
+	int	len;
 
-	if (n == 0)
-		return (0);
-	i = 0;
-	while ((s1[i] != '\0') && (s2[i] != '\0')
-		&& (s1[i] == s2[i]) && i < (n - 1))
-		i++;
-	return (s1[i] - s2[i]);
+	len = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		len++;
+	}
+	return (len);
 }

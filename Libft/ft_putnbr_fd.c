@@ -6,13 +6,13 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 11:04:38 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 11:48:19 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/15 23:18:44 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-void    ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
 	{

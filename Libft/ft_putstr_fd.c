@@ -6,16 +6,16 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 10:55:47 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 11:00:15 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/15 23:19:01 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-void    ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    while (*s)
-    {
-        ft_putchar_fd(*s++, fd);
-    }
+	while (*s)
+	{
+		ft_putchar_fd(*s++, fd);
+	}
 }

@@ -6,13 +6,13 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 10:24:23 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/12 10:49:39 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/15 23:26:06 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_toupper(int arg)
+int	ft_toupper(int arg)
 {
-    if (arg >= 'a' && arg <= 'z')
-        arg -= 32; 
-    return (arg);
+	if (arg >= 'a' && arg <= 'z')
+		arg -= 32;
+	return (arg);
 }

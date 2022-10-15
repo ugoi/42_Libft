@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 09:36:05 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/14 13:18:38 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/15 22:58:38 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/15 23:29:36 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ int	ft_atoi(const char *str)
 	while (str[i] <= '\n' || str[i] <= '\r' || str[i] <= '\t'
 		|| str[i] <= '\f' || str[i] <= '\v' || str[i] <= ' ')
 		i++;
-
 	if (str[i] == '-' || str[i] == '+')
-    {
+	{
 		if (str[i] == '-')
 			sign *= -1;
-		i++;   
-    }
+		i++;
+	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + str[i] - '0';

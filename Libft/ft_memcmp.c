@@ -6,22 +6,21 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:37:37 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/13 19:31:49 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/15 23:32:10 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 
-int ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-    const char * s1_cast;
-    const char * s2_cast;
-
-    s1_cast = s1;
-    s2_cast = s2;
+	const char		*s1_cast;
+	const char		*s2_cast;
 	unsigned int	i;
 
+	s1_cast = s1;
+	s2_cast = s2;
 	if (n == 0)
 		return (0);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:21:18 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/14 17:39:22 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/15 23:19:24 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ char	*ft_cpy(char const *src, int len)
 	return (res);
 }
 
-char    **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char			**res;
 	int				amount_of_strings;
 	int				str_index;
-	int				str_len;		
+	int				str_len;
 
 	amount_of_strings = ft_amount_of_strings(s, c);
 	res = malloc(sizeof(char *) * (amount_of_strings + TERMINATOR_LEN));

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 13:30:33 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:33:57 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/15 21:03:21 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/15 23:08:41 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include"libft.h"
+#include<stdlib.h>
 #include<unistd.h>
-#include <stdlib.h>
-#include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	char	*res;
-	char	*res_cast;
-
-	if (ft_strlen(s) < start)
-		len = 0;
-	else if (ft_strlen(s + start) < len)
-		len = ft_strlen(s + start);
-	res = malloc(sizeof(char) * (len + 1));
-	res_cast = res;
-	if (!res)
-		return (NULL);
-	s += start;
-	while (*s && len--)
-		*res_cast++ = *s++;
-	*res_cast = '\0';
-	return (res);
+	if (!lst)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }
