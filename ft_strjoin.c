@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 08:51:05 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:22:30 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/13 15:02:33 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/17 08:47:47 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t				i;
-	size_t				i2;
+	char	*res;
+	char	*res_cast;
+	size_t	total_len;
 
-	i = 0;
-	if (!(*to_find) || to_find == NULL)
-		return ((char *) str);
-	while ((i < len && str[i]))
-	{
-		i2 = 0;
-		while (to_find[i2] == str[i + i2] && i + i2 < len)
-		{
-			i2++;
-			if (to_find[i2] == '\0')
-				return ((char *) str + i);
-		}
-		i++;
-	}
-	return (NULL);
+	total_len = ft_strlen(s1) + ft_strlen(s2);
+	res = malloc(sizeof(char) * (total_len + 1));
+	res_cast = res;
+	if (!res)
+		return (NULL);
+	while (*s1)
+		*res_cast++ = *s1++;
+	while (*s2)
+		*res_cast++ = *s2++;
+	*res_cast = '\0';
+	return (res);
 }

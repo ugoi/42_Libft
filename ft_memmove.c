@@ -6,12 +6,11 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:31:00 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:32:25 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/17 08:44:20 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {

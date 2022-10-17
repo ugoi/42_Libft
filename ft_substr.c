@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 11:30:25 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:23:00 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/13 13:30:33 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/17 08:53:07 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
+#include <stdlib.h>
 #include "libft.h"
-#include<stdio.h>
 
-char	*ft_strrchr(const char *str, int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t		str_len;
-	const char	*lstr;
+	char	*res;
+	char	*res_cast;
 
-	str_len = ft_strlen(str);
-	lstr = str + (str_len);
-	while (str_len-- + 1)
-	{
-		if (*lstr == (char) c)
-			return ((char *) lstr);
-		lstr--;
-	}
-	return (NULL);
+	if (ft_strlen(s) < start)
+		len = 0;
+	else if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	res = malloc(sizeof(char) * (len + 1));
+	res_cast = res;
+	if (!res)
+		return (NULL);
+	s += start;
+	while (*s && len--)
+		*res_cast++ = *s++;
+	*res_cast = '\0';
+	return (res);
 }

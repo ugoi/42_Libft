@@ -6,11 +6,10 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:27:21 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:33:33 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/17 08:51:45 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
 #include "libft.h"
 
 char	*ft_skip_first(char const *s1, char const *set)

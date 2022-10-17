@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 21:03:21 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:08:41 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/15 21:12:21 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/17 08:38:40 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 #include<stdlib.h>
-#include<unistd.h>
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
+	t_list	*res;
+	t_list	*res_cast;
+	t_list	*prev_lst;
+
 	if (!lst)
-		return ;
+		return (NULL);
+	res = malloc(sizeof(t_list));
+	if (!res)
+		return (NULL);
+	res->content = f(lst->content);
+	lst = lst->next;
+	prev_lst = res;
 	while (lst)
 	{
-		f(lst->content);
+		res_cast = ft_lstnew(f(lst->content));
+		if (!res_cast)
+		{
+			ft_lstclear(&res, del);
+			return (NULL);
+		}
+		prev_lst->next = res_cast;
+		prev_lst = res_cast;
 		lst = lst->next;
 	}
+	return (res);
 }

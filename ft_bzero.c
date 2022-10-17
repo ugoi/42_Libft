@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 19:52:52 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:06:44 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/11 14:41:39 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/17 08:21:28 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-#include<stdlib.h>
-#include<stdio.h>
+#include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_bzero(void *s, size_t n)
 {
-	if (!lst)
-		return ;
-	if (!*lst)
-		*lst = new;
-	else
-		ft_lstlast(*lst)->next = new;
+	ft_memset(s, '\0', n);
 }

@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 14:41:39 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 22:59:10 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/13 08:21:21 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/17 08:41:00 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-	ft_memset(s, '\0', n);
+	const char	*str_cast;
+
+	str_cast = str;
+	while (n--)
+	{
+		if (*str_cast == (unsigned char) c)
+			return ((void *) str_cast);
+		str_cast++;
+	}
+	return (NULL);
 }

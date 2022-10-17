@@ -6,12 +6,12 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:45:07 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:31:03 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/17 08:41:31 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdlib.h>
-#include<stdio.h>
+#include <unistd.h>
 
 int	ft_numlen(int n)
 {

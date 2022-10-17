@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 23:07:19 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:07:24 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/12 11:30:25 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/17 08:50:50 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-#include<stdlib.h>
-#include<unistd.h>
+#include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+char	*ft_strrchr(const char *str, int c)
 {
-	t_list	*next_lst;
+	size_t		str_len;
+	const char	*lstr;
 
-	if (!lst)
-		return ;
-	if (!*lst)
+	str_len = ft_strlen(str);
+	lstr = str + (str_len);
+	while (str_len-- + 1)
 	{
-		free(*lst);
-		return ;
+		if (*lstr == (char) c)
+			return ((char *) lstr);
+		lstr--;
 	}
-	while (*lst)
-	{
-		next_lst = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = next_lst;
-	}
+	return (NULL);
 }

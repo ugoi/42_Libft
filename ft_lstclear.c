@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 08:21:21 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:13:30 by sdukic           ###   ########.fr       */
+/*   Created: 2022/10/15 23:07:19 by sdukic            #+#    #+#             */
+/*   Updated: 2022/10/17 08:25:16 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include<stdio.h>
+#include"libft.h"
+#include<stdlib.h>
 
-void	*ft_memchr(const void *str, int c, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	const char	*str_cast;
+	t_list	*next_lst;
 
-	str_cast = str;
-	while (n--)
+	if (!lst)
+		return ;
+	if (!*lst)
 	{
-		if (*str_cast == (unsigned char) c)
-			return ((void *) str_cast);
-		str_cast++;
+		free(*lst);
+		return ;
 	}
-	return (NULL);
+	while (*lst)
+	{
+		next_lst = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = next_lst;
+	}
 }
