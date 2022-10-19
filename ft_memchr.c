@@ -6,7 +6,7 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 08:21:21 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/17 08:41:00 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/18 15:59:46 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {
-	const char	*str_cast;
+	const unsigned char	*str_cast;
 
 	str_cast = str;
 	while (n--)

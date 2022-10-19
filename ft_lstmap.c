@@ -6,7 +6,7 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:12:21 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/17 08:38:40 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/19 02:42:17 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst)
 		return (NULL);
-	res = malloc(sizeof(t_list));
+	res = ft_lstnew(f(lst->content));
 	if (!res)
 		return (NULL);
-	res->content = f(lst->content);
 	lst = lst->next;
 	prev_lst = res;
 	while (lst)

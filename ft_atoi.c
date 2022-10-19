@@ -6,21 +6,22 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 22:58:38 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:29:36 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/19 02:54:37 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<limits.h>
+
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	num;
+	int						i;
+	unsigned long long int	sign;
+	unsigned long long int	num;
 
 	i = 0;
 	sign = 1;
 	num = 0;
-	while (str[i] <= '\n' || str[i] <= '\r' || str[i] <= '\t'
-		|| str[i] <= '\f' || str[i] <= '\v' || str[i] <= ' ')
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -33,5 +34,7 @@ int	ft_atoi(const char *str)
 		num = num * 10 + str[i] - '0';
 		i++;
 	}
+	if (num > LONG_MAX)
+		return (-(sign == 1));
 	return (num * sign);
 }

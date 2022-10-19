@@ -6,14 +6,14 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:07:07 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:20:05 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/18 22:51:21 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, char *src)
+static char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:21:18 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:19:24 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/18 21:56:37 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 #define TERMINATOR_LEN 1
 
-int	ft_is_sep(char const *str, char c)
-{
-	if (*str == c)
-		return (1);
-	return (0);
-}
-
-int	ft_str_len(char const *str, char c)
+static int	ft_str_len(char const *str, char c)
 {
 	int	fragm_len;
 
 	fragm_len = 0;
-	while (str[fragm_len] && !ft_is_sep(str + fragm_len, c))
+	while (str[fragm_len] && *(str + fragm_len) != c)
 		fragm_len++;
 	return (fragm_len);
 }
 
-int	ft_amount_of_strings(char const *str, char c)
+static int	ft_amount_of_strings(char const *str, char c)
 {
 	int	i;
 	int	amount_of_strings;
@@ -39,7 +32,7 @@ int	ft_amount_of_strings(char const *str, char c)
 	amount_of_strings = 0;
 	while (*str)
 	{
-		while (*str && ft_is_sep(str, c))
+		while (*str && *str == c)
 			str++;
 		i = ft_str_len(str, c);
 		str += i;
@@ -49,7 +42,7 @@ int	ft_amount_of_strings(char const *str, char c)
 	return (amount_of_strings);
 }
 
-char	*ft_cpy(char const *src, int len)
+static char	*ft_cpy(char const *src, int len)
 {
 	char	*res;
 
@@ -62,6 +55,14 @@ char	*ft_cpy(char const *src, int len)
 	return (res);
 }
 
+static char	**ft_free(int str_index, char **res)
+{
+	while (--str_index >= 0)
+		free(res[str_index]);
+	free(res);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char			**res;
@@ -69,6 +70,8 @@ char	**ft_split(char const *s, char c)
 	int				str_index;
 	int				str_len;
 
+	if (!s)
+		return (0);
 	amount_of_strings = ft_amount_of_strings(s, c);
 	res = malloc(sizeof(char *) * (amount_of_strings + TERMINATOR_LEN));
 	if (!res)
@@ -76,12 +79,12 @@ char	**ft_split(char const *s, char c)
 	str_index = 0;
 	while (str_index < amount_of_strings)
 	{
-		while (*s && ft_is_sep(s, c))
+		while (*s && *s == c)
 			s++;
 		str_len = ft_str_len(s, c);
 		res[str_index] = ft_cpy(s, str_len);
 		if (!res[str_index])
-			return (NULL);
+			return (ft_free(str_index, res));
 		s += str_len;
 		str_index++;
 	}

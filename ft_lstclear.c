@@ -6,7 +6,7 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 23:07:19 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/17 08:25:16 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/18 21:53:45 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*next_lst;
 
-	if (!lst)
+	if (!lst || !del)
 		return ;
 	if (!*lst)
 	{

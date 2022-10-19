@@ -6,14 +6,14 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:45:07 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/17 08:41:31 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/18 22:41:23 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdlib.h>
 #include <unistd.h>
 
-int	ft_numlen(int n)
+static int	ft_numlen(int n)
 {
 	int	size;
 
@@ -28,7 +28,7 @@ int	ft_numlen(int n)
 	return (size);
 }
 
-int	ft_amount(int n)
+static int	ft_amount(int n)
 {
 	if (n < 0)
 		n *= -1;
@@ -42,6 +42,8 @@ char	*ft_itoa(int n)
 
 	nlen = ft_numlen(n);
 	res = malloc(sizeof(char) * nlen + 1);
+	if (!res)
+		return (NULL);
 	res += nlen;
 	*res-- = '\0';
 	*res-- = ft_amount(n % 10) + '0';

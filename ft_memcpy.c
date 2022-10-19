@@ -6,7 +6,7 @@
 /*   By: sdukic <sdukic@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:56:14 by sdukic            #+#    #+#             */
-/*   Updated: 2022/10/15 23:15:04 by sdukic           ###   ########.fr       */
+/*   Updated: 2022/10/18 20:49:13 by sdukic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char		*dest_char;
 	const char	*src_char;
 
+	if (!dest && !src && n)
+		return (NULL);
 	dest_char = dest;
 	src_char = src;
 	i = 0;
